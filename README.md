@@ -1,115 +1,69 @@
-# 🧩 Daily Coding – DSA Practice (C++)
+# 🧩 Daily Coding — DSA Practice (C++)
 
-> Consistent daily practice of Data Structures & Algorithms in C++.  
-> One problem (or more) every day — tracked and organized by topic.
+> Solving one problem (or more) every day. All solutions live flat in the root — no folder maze.
 
 ---
 
-## 📁 Folder Structure
+## 📊 Stats
 
-```
-daily-coding/
-├── Arrays/
-├── Strings/
-├── LinkedList/
-├── Stack/
-├── Queue/
-├── Hashing/
-├── Trees/
-├── Graphs/
-├── Recursion-Backtracking/
-├── Dynamic-Programming/
-├── Greedy/
-├── Sorting-Searching/
-├── Heaps/
-├── Tries/
-├── Bit-Manipulation/
-├── Math/
-├── Two-Pointers/
-├── Sliding-Window/
-└── template.cpp       ← Starter template for new solutions
-```
+| Total | 🟢 Easy | 🟡 Medium | 🔴 Hard |
+|:-----:|:-------:|:---------:|:-------:|
+| **1** | 1 | 0 | 0 |
+
+---
+
+## 📋 All Problems
+
+| # | Problem | Difficulty | Topics | Platform | File |
+|:-:|---------|:----------:|--------|:--------:|------|
+| 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | 🟢 Easy | Arrays, Hashing | 🔷 LeetCode | [`two_sum.cpp`](two_sum.cpp) |
+
+---
+
+## 🗂️ Topic Index
+
+> Jump straight to problems by concept.
+
+**Arrays** (1) — [Two Sum](https://leetcode.com/problems/two-sum/)  
+**Hashing** (1) — [Two Sum](https://leetcode.com/problems/two-sum/)  
 
 ---
 
 ## 🚀 How to Use
 
-1. **Pick a topic folder** (e.g., `Arrays/`)
-2. **Copy the template**: `cp template.cpp Arrays/two_sum.cpp`
-3. **Solve the problem** and add your explanation in the header comment
-4. **Commit your solution**:
-   ```bash
-   git add .
-   git commit -m "Day XX: <Problem Name> [Arrays]"
-   git push
-   ```
+```bash
+# 1. Copy the template
+cp template.cpp two_sum.cpp
 
----
+# 2. Fill in the header + solve
 
-## 📋 Solution Template
-
-Each solution file follows this structure:
-
-```cpp
-/*
- * Problem: <Problem Title>
- * Platform: LeetCode / GFG / Codeforces
- * Link: <problem URL>
- * Difficulty: Easy / Medium / Hard
- *
- * Approach:
- *   - <Brief explanation>
- *   - Time Complexity: O(?)
- *   - Space Complexity: O(?)
- */
-
-#include <bits/stdc++.h>
-using namespace std;
-
-class Solution { ... };
+# 3. Commit (README updates automatically)
+git add two_sum.cpp
+git commit -m "Day XX: Two Sum [Easy]"
+git push
 ```
 
 ---
 
-## 📌 Topics Covered
+## 📄 Solution Template
 
-| Topic | Problems Solved |
-|---|---|
-| Arrays | 0 |
-| Strings | 0 |
-| LinkedList | 0 |
-| Stack | 0 |
-| Queue | 0 |
-| Hashing | 0 |
-| Trees | 0 |
-| Graphs | 0 |
-| Recursion & Backtracking | 0 |
-| Dynamic Programming | 0 |
-| Greedy | 0 |
-| Sorting & Searching | 0 |
-| Heaps | 0 |
-| Tries | 0 |
-| Bit Manipulation | 0 |
-| Math | 0 |
-| Two Pointers | 0 |
-| Sliding Window | 0 |
+```cpp
+/*
+ * Problem:    <Problem Title>
+ * Platform:   LeetCode
+ * Link:       https://leetcode.com/problems/...
+ * Difficulty: Easy | Medium | Hard
+ * Topics:     Arrays, Hashing
+ *
+ * Approach:
+ *   -
+ *
+ * Complexity:
+ *   Time:  O(?)
+ *   Space: O(?)
+ */
+```
 
 ---
 
-## 🛠 Language & Tools
-
-- **Language**: C++17
-- **Compiler**: g++ / clang++
-- **Platforms**: LeetCode · GeeksForGeeks · Codeforces
-
----
-
-## 📈 Progress
-
-| Week | Problems Solved |
-|---|---|
-| Week 1 | – |
-
----
-
-*"An investment in knowledge pays the best interest." — Keep grinding! 💪*
+*README auto-generated on 2026-08-20 by [`scripts/generate_readme.py`](scripts/generate_readme.py)*
