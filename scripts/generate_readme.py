@@ -35,20 +35,6 @@ README_PATH = os.path.join(REPO_ROOT, "README.md")
 EXCLUDE     = {"template.cpp"}
 
 DIFFICULTY_ORDER = {"Easy": 0, "Medium": 1, "Hard": 2, "Unknown": 3}
-DIFFICULTY_BADGE = {
-    "Easy":    "🟢 Easy",
-    "Medium":  "🟡 Medium",
-    "Hard":    "🔴 Hard",
-    "Unknown": "⚪ Unknown",
-}
-PLATFORM_ICON = {
-    "leetcode":   "🔷",
-    "gfg":        "🟩",
-    "geeksforgeeks": "🟩",
-    "codeforces": "🟣",
-    "hackerrank": "🟠",
-    "codechef":   "🟤",
-}
 
 # ── Parser ────────────────────────────────────────────────────────────────────
 
@@ -118,17 +104,13 @@ def collect_solutions() -> list[dict]:
 
 # ── README Builder ────────────────────────────────────────────────────────────
 
-def platform_icon(platform: str) -> str:
-    return PLATFORM_ICON.get(platform.lower(), "📄")
-
-
 def build_readme(solutions: list[dict]) -> str:
     total   = len(solutions)
     easy    = sum(1 for s in solutions if s["difficulty"] == "Easy")
     medium  = sum(1 for s in solutions if s["difficulty"] == "Medium")
     hard    = sum(1 for s in solutions if s["difficulty"] == "Hard")
 
-    # ── Collect all unique topics for the topic index ──────────────────────
+    # Collect all unique topics for the topic index
     topic_map = defaultdict(list)  # topic -> list of solution dicts
     for s in solutions:
         for t in s["topics"]:
@@ -136,41 +118,40 @@ def build_readme(solutions: list[dict]) -> str:
 
     lines = []
 
-    # ── Header ────────────────────────────────────────────────────────────
+    # Header
     lines += [
-        "# 🧩 Daily Coding — DSA Practice (C++)",
+        "# Daily Coding - DSA Practice (C++)",
         "",
-        "> Solving one problem (or more) every day. All solutions live flat in the root — no folder maze.",
+        "> One problem every day, all solutions in the root directory.",
         "",
         "---",
         "",
     ]
 
-    # ── Stats ─────────────────────────────────────────────────────────────
+    # Stats
     lines += [
-        "## 📊 Stats",
+        "## Stats",
         "",
-        f"| Total | 🟢 Easy | 🟡 Medium | 🔴 Hard |",
-        f"|:-----:|:-------:|:---------:|:-------:|",
+        "| Total | Easy | Medium | Hard |",
+        "|:-----:|:----:|:------:|:----:|",
         f"| **{total}** | {easy} | {medium} | {hard} |",
         "",
         "---",
         "",
     ]
 
-    # ── All Problems Table ─────────────────────────────────────────────────
+    # All Problems Table
     if solutions:
         lines += [
-            "## 📋 All Problems",
+            "## All Problems",
             "",
             "| # | Problem | Difficulty | Topics | Platform | File |",
-            "|:-:|---------|:----------:|--------|:--------:|------|",
+            "|:-:|---------|:----------:|--------|----------|------|",
         ]
         for i, s in enumerate(solutions, 1):
-            topics_str = ", ".join(s["topics"]) if s["topics"] else "—"
-            icon       = platform_icon(s["platform"])
-            platform   = f"{icon} {s['platform']}" if s["platform"] else "—"
-            diff_badge = DIFFICULTY_BADGE.get(s["difficulty"], s["difficulty"])
+            topics_str   = ", ".join(s["topics"]) if s["topics"] else "-"
+            platform_str = s["platform"] if s["platform"] else "-"
+            diff_str     = s["difficulty"]
 
             if s["link"]:
                 problem_cell = f"[{s['problem']}]({s['link']})"
@@ -180,28 +161,28 @@ def build_readme(solutions: list[dict]) -> str:
             file_cell = f"[`{s['file']}`]({s['file']})"
 
             lines.append(
-                f"| {i} | {problem_cell} | {diff_badge} | {topics_str} | {platform} | {file_cell} |"
+                f"| {i} | {problem_cell} | {diff_str} | {topics_str} | {platform_str} | {file_cell} |"
             )
         lines.append("")
         lines.append("---")
         lines.append("")
     else:
         lines += [
-            "## 📋 All Problems",
+            "## All Problems",
             "",
-            "> No solutions yet — add your first `.cpp` file and run `python scripts/generate_readme.py`!",
+            "> No solutions yet. Add a `.cpp` file with a filled header and run `python scripts/generate_readme.py`.",
             "",
             "---",
             "",
         ]
 
-    # ── Topic Index ───────────────────────────────────────────────────────
+    # Topic Index
     if topic_map:
         lines += [
-            "## 🗂️ Topic Index",
+            "## Topic Index",
             "",
-            "> Jump straight to problems by concept.",
-            "",
+            "| Topic | Count | Problems |",
+            "|-------|:-----:|----------|",
         ]
         for topic in sorted(topic_map):
             probs = topic_map[topic]
@@ -209,24 +190,24 @@ def build_readme(solutions: list[dict]) -> str:
                 f"[{p['problem']}]({p['link']})" if p["link"] else p["problem"]
                 for p in probs
             )
-            lines.append(f"**{topic}** ({len(probs)}) — {links}  ")
+            lines.append(f"| {topic} | {len(probs)} | {links} |")
         lines.append("")
         lines.append("---")
         lines.append("")
 
-    # ── How to Use ────────────────────────────────────────────────────────
+    # How to Use
     lines += [
-        "## 🚀 How to Use",
+        "## How to Use",
         "",
         "```bash",
         "# 1. Copy the template",
-        "cp template.cpp two_sum.cpp",
+        "cp template.cpp problem_name.cpp",
         "",
-        "# 2. Fill in the header + solve",
+        "# 2. Fill in the header comment and write your solution",
         "",
-        "# 3. Commit (README updates automatically)",
-        'git add two_sum.cpp',
-        'git commit -m "Day XX: Two Sum [Easy]"',
+        "# 3. Commit -- the README updates automatically",
+        "git add problem_name.cpp",
+        'git commit -m "Day XX: Problem Name [Difficulty]"',
         "git push",
         "```",
         "",
@@ -236,7 +217,7 @@ def build_readme(solutions: list[dict]) -> str:
 
     # ── Template Reference ────────────────────────────────────────────────
     lines += [
-        "## 📄 Solution Template",
+        "## Solution Template",
         "",
         "```cpp",
         "/*",
@@ -272,7 +253,7 @@ def main():
     with open(README_PATH, "w", encoding="utf-8") as f:
         f.write(readme)
 
-    print(f"✅ README.md updated — {len(solutions)} solution(s) indexed.")
+    print(f"README.md updated -- {len(solutions)} solution(s) indexed.")
 
 
 if __name__ == "__main__":

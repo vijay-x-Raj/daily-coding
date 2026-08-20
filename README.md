@@ -1,51 +1,51 @@
-# 🧩 Daily Coding — DSA Practice (C++)
+# Daily Coding - DSA Practice (C++)
 
-> Solving one problem (or more) every day. All solutions live flat in the root — no folder maze.
+> One problem every day, all solutions in the root directory.
 
 ---
 
-## 📊 Stats
+## Stats
 
-| Total | 🟢 Easy | 🟡 Medium | 🔴 Hard |
-|:-----:|:-------:|:---------:|:-------:|
+| Total | Easy | Medium | Hard |
+|:-----:|:----:|:------:|:----:|
 | **1** | 1 | 0 | 0 |
 
 ---
 
-## 📋 All Problems
+## All Problems
 
 | # | Problem | Difficulty | Topics | Platform | File |
-|:-:|---------|:----------:|--------|:--------:|------|
-| 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | 🟢 Easy | Arrays, Hashing | 🔷 LeetCode | [`two_sum.cpp`](two_sum.cpp) |
+|:-:|---------|:----------:|--------|----------|------|
+| 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | Easy | Arrays, Hashing | LeetCode | [`two_sum.cpp`](two_sum.cpp) |
 
 ---
 
-## 🗂️ Topic Index
+## Topic Index
 
-> Jump straight to problems by concept.
-
-**Arrays** (1) — [Two Sum](https://leetcode.com/problems/two-sum/)  
-**Hashing** (1) — [Two Sum](https://leetcode.com/problems/two-sum/)  
+| Topic | Count | Problems |
+|-------|:-----:|----------|
+| Arrays | 1 | [Two Sum](https://leetcode.com/problems/two-sum/) |
+| Hashing | 1 | [Two Sum](https://leetcode.com/problems/two-sum/) |
 
 ---
 
-## 🚀 How to Use
+## How to Use
 
 ```bash
 # 1. Copy the template
-cp template.cpp two_sum.cpp
+cp template.cpp problem_name.cpp
 
-# 2. Fill in the header + solve
+# 2. Fill in the header comment and write your solution
 
-# 3. Commit (README updates automatically)
-git add two_sum.cpp
-git commit -m "Day XX: Two Sum [Easy]"
+# 3. Commit -- the README updates automatically
+git add problem_name.cpp
+git commit -m "Day XX: Problem Name [Difficulty]"
 git push
 ```
 
 ---
 
-## 📄 Solution Template
+## Solution Template
 
 ```cpp
 /*
